@@ -1,0 +1,64 @@
+{
+  "name": "fb-ant-crawler",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "NODE_ENV='production' node --require dotenv/config dist/index.js",
+    "dev": "nodemon --require dotenv/config",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "ts-node tests/publish-queue/index.ts ",
+    "clean": "rm -rf dist/ logs/",
+    "audit": "npm audit --registry https://registry.npmjs.org/ --json | npm-audit-helper --prod-only"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint:eslint:fix",
+      "git add --force"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add --force"
+    ]
+  },
+  "pre-commit": "lint:staged",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^14.0.26",
+    "amqp-connection-manager": "^3.2.2",
+    "amqplib": "^0.7.1",
+    "axios": "^0.21.1",
+    "cookie": "^0.4.1",
+    "cross-env": "^7.0.2",
+    "delay": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "jscpd": "^3.3.1",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "mongoose": "^5.12.1",
+    "node-2fa": "^2.0.3",
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7",
+    "prettier": "^2.2.1",
+    "puppeteer": "^7.1.0",
+    "puppeteer-extra-plugin-adblocker": "^2.11.11",
+    "puppeteer-extra-plugin-stealth": "^2.7.6",
+    "ts-node": "^8.10.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/amqp-connection-manager": "^2.0.10",
+    "@types/puppeteer": "^5.4.3",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "tslint-config-airbnb": "^5.11.2",
+    "tslint-config-standard": "^9.0.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.9.7"
+  }
+}

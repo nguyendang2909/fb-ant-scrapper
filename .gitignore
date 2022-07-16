@@ -1,0 +1,24 @@
+# Dependency directory
+node_modules
+
+# Logs
+logs
+*.log
+
+# Idea
+.idea
+
+# Code build folder
+dist*
+.env
+config.js
+
+
+#Temp
+.env.sh
+tmp
+temp
+temp.js
+
+
+
